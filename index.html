@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROCKET LAB — MISSION CONTROL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<div class="app-wrapper">
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-bar-title">ROCKET LAB</div>
+    <div class="top-bar-meta">ORBITAL SYSTEMS v1.0 &nbsp;|&nbsp; FLIGHT COMPUTER ONLINE</div>
+    <div class="top-bar-status">
+      <span><span class="status-dot"></span>SYS NOMINAL</span>
+      <span><span class="status-dot"></span>TELEMETRY OK</span>
+      <span><span class="status-dot"></span>RANGE CLEAR</span>
+    </div>
+  </header>
+
+  <!-- ===== BUILDER VIEW ===== -->
+  <div id="view-builder" class="view">
+  <div class="builder-content">
+
+    <!-- Parts palette -->
+    <aside class="panel-parts">
+      <div class="panel-label">▸ AVAILABLE COMPONENTS</div>
+      <div class="parts-scroll">
+        <div id="parts-palette"></div>
+      </div>
+      <div class="presets-panel">
+        <div class="presets-label">▸ PRESETS</div>
+        <div class="preset-btns">
+          <button class="btn-preset" id="btn-preset-minimal">MINIMAL</button>
+          <button class="btn-preset" id="btn-preset-heavy">HEAVY</button>
+          <button class="btn-preset" id="btn-preset-unstable">UNSTABLE</button>
+          <button class="btn-preset" id="btn-preset-tiny">TINY</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main builder area -->
+    <div class="builder-main">
+
+      <!-- Rocket stack -->
+      <div class="panel-stack">
+        <div class="panel-label">▸ VEHICLE STACK &nbsp;<span class="dim" style="font-size:9px">(TOP → BOTTOM)</span></div>
+        <div class="stack-scroll">
+          <div id="rocket-stack"></div>
+        </div>
+      </div>
+
+      <!-- ASCII preview -->
+      <div class="panel-preview">
+        <div class="panel-label">▸ VEHICLE VIEW</div>
+        <div class="preview-scroll">
+          <pre id="rocket-preview"></pre>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="panel-stats">
+        <div class="panel-label">▸ VEHICLE STATS</div>
+        <div class="stats-scroll">
+          <div id="rocket-stats"><span class="dim">-- NO ROCKET --</span></div>
+        </div>
+        <div class="warnings-panel">
+          <div id="rocket-warnings"></div>
+        </div>
+      </div>
+
+    </div><!-- /builder-main -->
+
+  </div><!-- /builder-content -->
+
+    <!-- Launch strip inside builder view -->
+    <div id="launch-strip" class="launch-strip">
+      <button id="btn-launch" class="btn-launch-main" disabled>⚠ INCOMPLETE</button>
+      <button id="btn-clear" class="btn-secondary">CLEAR STACK</button>
+      <div id="launch-alert"></div>
+    </div>
+
+  </div><!-- /view-builder -->
+
+  <!-- ===== FLIGHT VIEW ===== -->
+  <div id="view-flight" class="view hidden">
+    <div id="terminal-container"></div>
+  </div>
+
+</div><!-- /app-wrapper -->
+
+<!-- ABORT / RETURN button (floats over flight view) -->
+<button id="btn-reset" onclick="onReset()">↩ RETURN TO VAB</button>
+
+<!-- Scripts — load order matters -->
+<script src="parts.js"></script>
+<script src="physics.js"></script>
+<script src="builder.js"></script>
+<script src="terminal.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
